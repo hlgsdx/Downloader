@@ -1,5 +1,7 @@
 # 基于MFC的文件下载器
 
+[![Build status](https://ci.appveyor.com/api/projects/status/dmbec2d7commf78s?svg=true)](https://ci.appveyor.com/project/hlgsdx/downloader)
+
 ### 当前版本：最基础的HTTP下载功能，在线程池中调用（依旧单线程，分段+多线程待完成）
 
 #### TODO: 
