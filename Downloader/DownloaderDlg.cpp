@@ -53,8 +53,8 @@ CDownloaderDlg *CDownloaderDlg::p_gThis = NULL;
 
 CDownloaderDlg::CDownloaderDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DOWNLOADER_DIALOG, pParent)
-	, m_strURL(_T("http://198.181.32.164/img/gitea-lg.png"))
-	, m_strFilename(_T("./gitea-lg.png"))
+	, m_strURL(_T("http://www.baidu.com/img/bd_logo1.png"))
+	, m_strFilename(_T("./File.png"))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	p_gThis = this;
@@ -74,6 +74,7 @@ BEGIN_MESSAGE_MAP(CDownloaderDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_GO, &CDownloaderDlg::OnBnClickedBtnGo)
 	ON_BN_CLICKED(IDC_BTN_SETPATH, &CDownloaderDlg::OnBnClickedButtonPath)
+	ON_BN_CLICKED(IDC_BTN_STOP, &CDownloaderDlg::OnBnClickedBtnStop)
 END_MESSAGE_MAP()
 
 
@@ -167,8 +168,11 @@ HCURSOR CDownloaderDlg::OnQueryDragIcon()
 void CDownloaderDlg::OnBnClickedBtnGo()
 {
 	UpdateData();
-	CDlHelper cdl(m_strURL, m_strFilename);
-	cdl.download(&CDownloaderDlg::UpdatePgBar);
+// 	CDlHelper cdl(m_strURL, m_strFilename);
+// 	cdl.download(&CDownloaderDlg::UpdatePgBar);
+	DlTask *ptask = new DlTask(m_strURL, m_strFilename,&CDownloaderDlg::UpdatePgBar);
+	m_Thpool.CreateThreadPool(1,1);
+	m_Thpool.Push(ptask);
 }
 
 void CDownloaderDlg::UpdatePgBar(int ContentSize, int CUR_LEN)
@@ -190,4 +194,10 @@ void CDownloaderDlg::OnBnClickedButtonPath()
 	}
 
 	UpdateData(FALSE);
+}
+
+
+void CDownloaderDlg::OnBnClickedBtnStop()
+{
+	m_Thpool.DestroyThreadPool();
 }

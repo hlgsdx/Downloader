@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "MyThreadPool.h"
 
 // CDownloaderDlg ¶Ô»°¿ò
 class CDownloaderDlg : public CDialogEx
@@ -37,4 +37,6 @@ public:
 	CProgressCtrl m_pgbar;
 	static void UpdatePgBar(int ContentSize, int CUR_LEN);
 	afx_msg void OnBnClickedButtonPath();
+	CMyThreadPool m_Thpool;
+	afx_msg void OnBnClickedBtnStop();
 };

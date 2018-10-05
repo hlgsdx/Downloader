@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ThreadPool">
+      <UniqueIdentifier>{6a190be6-7e07-4e84-8bb8-42bccc7e4c3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -36,6 +39,9 @@
     <ClInclude Include="DlHelper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MyThreadPool.h">
+      <Filter>ThreadPool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Downloader.cpp">
@@ -49,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="DlHelper.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyThreadPool.cpp">
+      <Filter>ThreadPool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
